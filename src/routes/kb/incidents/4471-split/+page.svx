@@ -4,7 +4,7 @@ title: '#4471 · three problems, not one'
 owner: support desk
 status: open
 reviewed: 2026-10-30
-signature: grzegorzp-commits
+signature: v1.eyJzdWIiOiI4MDMxIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMzOTQ1MjMsImV4cCI6MTc5MzQ4MDkyM30.Aj3s1oo35UavydQTKPcXx0KAbWc0TIwivsPBfCTdUF0
 ---
 
 <script>
