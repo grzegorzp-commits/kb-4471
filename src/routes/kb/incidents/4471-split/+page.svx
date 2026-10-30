@@ -1,0 +1,54 @@
+---
+layout: runbook
+title: '#4471 · three problems, not one'
+owner: support desk
+status: open
+reviewed: 2026-10-30
+signature: grzegorzp-commits
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+[#4471](/kb/incidents/4471) was merged as one issue: the parser reads dates month first. That is
+true for most of its reports. It is not true for all of them. Counted by cause, the reports fall
+into three problems, and each has its own ticket in
+[grzegorzp-commits/kb-4471](https://github.com/grzegorzp-commits/kb-4471/issues).
+
+<Callout kind="warn">
+Not known and fixed. The parser fix will not close the form hint reports or the one-day moves.
+</Callout>
+
+## What is merged
+
+<CauseTable ticket={4471} />
+
+## The three problems
+
+1. **Parser** ([ticket 1](https://github.com/grzegorzp-commits/kb-4471/issues/1)). The shared
+   parser reads every date month first, so day-first tenants get flipped dates. This is the
+   cause the incident page names, and it covers most of the reports.
+2. **Hint** ([ticket 2](https://github.com/grzegorzp-commits/kb-4471/issues/2)). Tenants on
+   `booking-v3` see the hint `MM/DD/YYYY` under the date field. Their people type month first,
+   and the form reads it day first. Every one of these reports came through the form. Intake
+   tagged many of them `parser`, because the tag is a guess from the browser.
+3. **One-day move** ([ticket 3](https://github.com/grzegorzp-commits/kb-4471/issues/3)). Five
+   reports describe a date that is one day off, not a swapped month. The desk's own notes list
+   them. The table above files them under `parser` because of their tenant; they look like a
+   time zone problem.
+
+## Why the merge hid this
+
+The desk merges on subject line ([decision 0001](/kb/decisions/0001-dedupe-by-subject)). Subject
+says nothing about cause, so three different bugs went into one ticket and were counted as one.
+The intake tag does not help: it is a guess made before anyone reads the report.
+
+## Lessons
+
+- Count by cause, not by subject. The cause depends on the tenant and the form, not on the words.
+- A ticket marked known can still hide other problems. Check the table before you close it.
+
+<RenderStamp {signature} />
